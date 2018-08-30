@@ -39,8 +39,14 @@ namespace MVCDemo.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(Employee employees)
+        public ActionResult Create(FormCollection formcollection)
         {
+            Employee employees = new Employee();
+            if (formcollection != null && formcollection .Count>0)
+            {
+                employees.Name = formcollection["Name"];
+                employees.Gender = formcollection["Gender"];
+            }
             SqlDataHelper db = new SqlDataHelper();
             db.InsertEmployee(employees);
             return RedirectToAction("Employees");
