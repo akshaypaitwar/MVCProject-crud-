@@ -33,23 +33,32 @@ namespace MVCDemo.Controllers
             return View(emplo);
         }
         [HttpGet]
-        public ActionResult Create()
+        [ActionName("Create")]
+        public ActionResult Create_Get()
         {
             
             return View();
         }
         [HttpPost]
-        public ActionResult Create(FormCollection formcollection)
+        [ActionName("Create")]
+        public ActionResult Create_Post()
         {
             Employee employees = new Employee();
-            if (formcollection != null && formcollection .Count>0)
+            //if (formcollection != null && formcollection .Count>0)
+            //{
+            //    employees.Name = formcollection["Name"];
+            //    employees.Gender = formcollection["Gender"];
+            //}
+            //employees.Name = Name;
+            //employees.Gender = Gender;
+            // UpdateModel<Employee>(employees);
+            if (TryUpdateModel<Employee>(employees))
             {
-                employees.Name = formcollection["Name"];
-                employees.Gender = formcollection["Gender"];
+                SqlDataHelper db = new SqlDataHelper();
+                db.InsertEmployee(employees);
+                return RedirectToAction("Employees");
             }
-            SqlDataHelper db = new SqlDataHelper();
-            db.InsertEmployee(employees);
-            return RedirectToAction("Employees");
+            return View();
         }
         public string DisplaystringOnTheString()
         {
