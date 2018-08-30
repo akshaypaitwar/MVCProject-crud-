@@ -43,7 +43,7 @@ namespace MVCDemo.Controllers
         {
             SqlDataHelper db = new SqlDataHelper();
             db.InsertEmployee(employees);
-            return View();
+            return RedirectToAction("Employees");
         }
         public string DisplaystringOnTheString()
         {
