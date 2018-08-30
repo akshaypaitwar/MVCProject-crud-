@@ -49,5 +49,9 @@ namespace MVCDemo.Controllers
         {
             return "Hello Akshay and Welcome to the mvc project";
         }
+        public string DisplaystringOnTheString2()
+        {
+            return "Hello Akshay and Welcome to the mvc project";
+        }
     }
 }
