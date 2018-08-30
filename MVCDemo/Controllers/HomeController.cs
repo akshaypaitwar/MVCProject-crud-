@@ -35,6 +35,7 @@ namespace MVCDemo.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            
             return View();
         }
         [HttpPost]
@@ -43,6 +44,10 @@ namespace MVCDemo.Controllers
             SqlDataHelper db = new SqlDataHelper();
             db.InsertEmployee(employees);
             return View();
+        }
+        public string DisplaystringOnTheString()
+        {
+            return "Hello Akshay and Welcome to the mvc project";
         }
     }
 }
